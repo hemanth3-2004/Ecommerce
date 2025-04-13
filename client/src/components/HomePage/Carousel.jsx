@@ -28,7 +28,7 @@ const Carousel = () => {
       const newIndex = currentIndex - 1;
       setCurrentIndex(newIndex);
       gsap.to(CarouselDiv.current, {
-        x: `-${newIndex * 80}vw`,
+        x: `-${newIndex * 81.5}vw`,
         duration: 1,
         ease: "power2.out",
       });

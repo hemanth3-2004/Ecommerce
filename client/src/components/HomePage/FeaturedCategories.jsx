@@ -3,7 +3,7 @@ import FeaturedCategoriesComponent from "./FeaturedCategoriesComponent";
 
 const FeaturedCategories = () => {
   return (
-    <div className="px-16 mb-5">
+    <div className="px-20 mb-5">
       <h1 className="font-semibold text-lg mb-2">FEATURED CATEGORIES</h1>
       <div className="grid grid-cols-8">
         <FeaturedCategoriesComponent

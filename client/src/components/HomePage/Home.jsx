@@ -1,9 +1,11 @@
 import React from "react";
-import FeaturedCategories from "./FeaturedCategories.jsx"
+import FeaturedCategories from "./FeaturedCategories.jsx";
+import Carousel from "./Carousel.jsx";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
+      <Carousel />
       <FeaturedCategories />
     </div>
   );

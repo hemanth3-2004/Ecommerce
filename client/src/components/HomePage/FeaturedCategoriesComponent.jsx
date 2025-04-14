@@ -17,6 +17,7 @@ const FeaturedCategoriesComponent = ({ name, src, bg }) => {
       {
         y: -7,
         duration: 1.5,
+        delay:0.015,
         ease: "bounce.out",
         repeat: -1,
         yoyo: true,

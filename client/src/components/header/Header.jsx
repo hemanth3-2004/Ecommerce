@@ -38,7 +38,7 @@ function Header() {
     ];
 
     return (
-        <header className="bg-white shadow-md px-4 md:px-16">
+        <header className="bg-white shadow-md px-4 md:px-16 ">
             <div className="flex justify-between items-center py-4">
                 {/* Logo and Location */}
                 <div className="flex items-center gap-4">
@@ -75,14 +75,14 @@ function Header() {
             </div>
 
             {/* Category Menu */}
-            <div className="hidden md:flex justify-center gap-6 py-2 border-t">
-                <div className="relative">
+            <div className="hidden md:flex md:flex-wrap justify-center gap-2  border-t w-full">
+                <div className="relative w-full">
                     <button 
-                        className="border outline-none rounded-full bg-custom text-white flex items-center justify-between px-4 w-[200px] hover:bg-red-700" 
+                        className="border outline-none rounded-full bg-custom text-white flex items-center justify-between px-4 w-[12em] hover:bg-red-700" 
                         onClick={handleClick}
                     >
-                        <MenuIcon className="mr-1" />
-                        <p className="text-sm">ALL CATEGORIES</p>
+                        <MenuIcon className="" />
+                        <p className="text-sm py-3 w-[7em] font-semibold">ALL CATEGORIES</p>
                         <KeyboardArrowDownIcon className="ml-1" />
                     </button>
 
@@ -96,7 +96,7 @@ function Header() {
                 {categories.map(({ name, img }) => (
                     <div
                         key={name}
-                        className="relative group"
+                        className="relative group flex justify-center items-center"
                         onMouseEnter={() => handleHoverEnter(name)}
                         onMouseLeave={handleHoverLeave}
                     >

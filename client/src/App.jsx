@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import SignupPage from "./components/header/SignUp.jsx";
 function App() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden z-20">
       <BrowserRouter>
         <Header />
         <Routes>

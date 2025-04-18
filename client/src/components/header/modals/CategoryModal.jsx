@@ -39,7 +39,7 @@ function CategoryModel() {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative flex items-center justify-center">
       <div
         className="ml-3 mt-3 flex flex-col md:flex-row relative"
         onMouseLeave={handleHoverLeave}

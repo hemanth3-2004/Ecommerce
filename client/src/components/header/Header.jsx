@@ -75,8 +75,8 @@ function Header() {
             </div>
 
             {/* Category Menu */}
-            <div className="hidden md:flex md:flex-wrap justify-center gap-2  border-t w-full">
-                <div className="relative w-full">
+            <div className="hidden md:flex md:flex-wrap justify-center gap-2  border-t w-full ">
+                <div className="relative ">
                     <button 
                         className="border outline-none rounded-full bg-custom text-white flex items-center justify-between px-4 w-[12em] hover:bg-red-700" 
                         onClick={handleClick}

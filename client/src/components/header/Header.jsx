@@ -63,13 +63,13 @@ function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-md px-4 md:px-16 ">
+    <header className="bg-white shadow-md px-4 md:px-16">
       <div className="flex justify-between items-center py-4">
         {/* Logo and Location */}
         <div className="flex items-center gap-4">
-          <img className="h-12 w-auto" src="/ecommerce logo.jpg" alt="Logo" />
+          <img className="h-12 w-auto" src="https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo-1971-present.jpg" alt="Logo" />
           <button
-            className="hidden md:flex border outline-none px-4 py-3 rounded-md hover:bg-blue-100 transition"
+            className="hidden md:flex border outline-none px-4 py-3 rounded-md  transition text-gray-400 hover:border-gray-600 hover:text-gray-600  focus:bg-blue-50"
             onClick={handleLocationClick}
           >
             Your Location
@@ -81,7 +81,7 @@ function Header() {
           <input
             type="text"
             placeholder="Search for products..."
-            className="w-full border outline-none px-4 py-3 pr-12 rounded-md bg-gray-100 placeholder-gray-500"
+            className="w-full border outline-none px-4 py-3 pr-12 rounded-md bg-gray-100 placeholder-gray-500 hover:border-gray-600"
           />
           <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
             <SearchIcon />
@@ -112,7 +112,7 @@ function Header() {
             onClick={handleClick}
           >
             <MenuIcon className="" />
-            <p className="text-sm py-3 w-[7em] font-semibold">ALL CATEGORIES</p>
+            <p className="text-sm py-1 w-[7em] font-semibold">ALL CATEGORIES</p>
             <KeyboardArrowDownIcon className="ml-1" />
           </button>
 
@@ -130,7 +130,7 @@ function Header() {
             onMouseEnter={() => handleHoverEnter(name)}
             onMouseLeave={handleHoverLeave}
           >
-            <button className="rounded-full flex gap-2 px-2 py-3 text-gray-500 pl-5 pr-10 text-sm font-bold hover:bg-gray-100">
+            <button className="rounded-full flex gap-2 px-2 py-1 text-gray-500 pl-5 pr-10 text-sm font-bold hover:bg-gray-100">
               <img src={img} width="25" height="10" alt={name.toLowerCase()} />
               <p>{name}</p>
             </button>

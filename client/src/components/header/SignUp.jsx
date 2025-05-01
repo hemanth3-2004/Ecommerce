@@ -2,8 +2,8 @@ import React from "react";
 
 function SignupPage() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-custom to-white">
-      <div className="bg-white w-full max-w-md p-5 rounded-md shadow-lg"> 
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-custom via-yellow-200 to-white">
+      <div className="bg-white w-full max-w-md p-5 rounded-md shadow-2xl"> 
 
         <h2 className="text-2xl font-bold text-gray-700 text-center pt-3 pb-3">Sign In</h2>
 

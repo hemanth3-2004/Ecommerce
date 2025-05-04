@@ -4,6 +4,8 @@ import TwoColumnLayout from './TwoColumnLayout';
 import { FaShoppingCart } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { MdCompareArrows } from "react-icons/md";
+import relatedProducts from './relatedProducts';
+import RelatedProducts from './relatedProducts';
 
 
 
@@ -33,10 +35,11 @@ function removeCount(){
         getAllData();
     }, []);
   return (
-    <div className="w-[100%] h-[100%] text-red-400 font-bold bg-white absolute z-50 m-0">
-        <div className='w-[80%] h-auto mx-[10%] flex mt-[3%]'>
+    <div>
+    <div className="w-[100%] h-auto bg-white z-50 m-0">
+        <div className='w-[80%] h-auto mx-[10%] flex mt-[3%] pb-[2%]'>
         <div className="h-[100%] w-[35%]">
-          <div className='w-[85%]  h-[26.4em] m-[7.5%] rounded-lg'>
+          <div className='w-[85%]  h-[26.4em] m-[7.5%] rounded-lg shadow-xl shadow-custom'>
             <img className="w-full h-full rounded-lg"src={data.image} alt="product" />
           </div>
         </div>
@@ -47,7 +50,7 @@ function removeCount(){
             <div className='flex flex-col gap-3 w-[90%] mx-[5%] mt-[5%]'>
               <div className="w-auto  h-auto"><h1 className="text-[1.7em] text-black font-semibold">{data.title}</h1></div>
               <div className="w-auto  h-auto"><div className='flex flex-row'><h2 className='text-[1.2em] text-gray-400 font-medium flex flex-row '>Brand: </h2><p className="text-[1.2em] text-black font-normal ml-1 line-clamp-none">myBRAND <span className="text-[1em] text-yellow-400">★★★★★</span></p></div></div>
-              <div className="w-auto  h-auto"><div className='flex flex-row'><h2 className='text-[1.2em] text-gray-400 font-medium flex flex-row line-through'>Rs: 2500 </h2><p className="text-[1.2em] text-red-500 font-normal ml-2 line-clamp-none ">  Rs:{data.price}</p></div></div>
+              <div className="w-auto  h-auto"><div className='flex flex-row'><h2 className='text-[1.2em] text-gray-400 font-medium flex flex-row line-through'></h2><p className="text-[1.2em] text-red-500 font-normal ml-2 line-clamp-none ">  Rs:{data.price}</p></div></div>
               <div className="w-auto  h-auto"><div className="bg-green-50 w-[15%] rounded-full text-center text-green-600 text-[1.2em] h-[1.6em]"><p>IN STOCK</p></div></div>
               <div className="w-auto  h-auto"><p className='text-black font-normal'>{data.description}</p></div>
 
@@ -107,7 +110,10 @@ function removeCount(){
             </div>
         </div>
      
+    </div>  <hr className="my-4 border-t border-gray-300" />
     </div>
+
+    <RelatedProducts className="mt-5"/>
     </div>
   )
 }

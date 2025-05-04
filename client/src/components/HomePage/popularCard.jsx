@@ -12,7 +12,7 @@ function PopularCard(props) {
 
   return (
 
-      <div className="border border-2 border-solid border-gray-300 w-full h-[28rem] rounded-md bg-gray-100  hover:shadow-2xl hover:shadow-gray-400 fixed relative" onClick={props.onClick}>
+      <div className="border border-2 border-solid border-gray-300 w-full h-[28rem] rounded-md bg-gray-100  hover:shadow-2xl hover:shadow-custom fixed relative" onClick={props.onClick}>
 
         <div className="m-[2%] h-[60%] rounded-md pt-1">
           <img

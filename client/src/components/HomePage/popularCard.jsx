@@ -1,21 +1,42 @@
-import React from 'react'
+import React, { useState} from "react";
+import DetailedCard from "./detailedCard";
+function PopularCard(props) {
 
-function PopularCard() {
+
+  const [card,setCard] = useState(false);
+
+  function handleClick(){
+      setCard(!card);
+  }
+
+
   return (
-    <div>
-    <div className="w-full h-full rounded-md bg-gray-200">
+
+      <div className="border border-2 border-solid border-gray-300 w-full h-[28rem] rounded-md bg-gray-100  hover:shadow-2xl hover:shadow-gray-400 fixed relative" onClick={props.onClick}>
+
         <div className="m-[2%] h-[60%] rounded-md pt-1">
-        <img className="h-full w-full rounded-md" src="https://latestshirt.com/wp-content/uploads/2019/10/Short-Sleeve-Shirt-Business-Shirts2.jpg" alt="" />
+          <img
+            className="h-full w-full rounded-md"
+            src= {props.image}
+            alt="product"
+          />
         </div>
 
-        <h2 className="font-semibold m-2">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h2>
+        <h2 className="font-semibold m-2">
+          {props.title}
+        </h2>
 
-        <h1 className='text-[1.2em] text-green-700 px-3 font-semibold'>In Stock</h1>
+        <h1 className="text-[1.2em] text-green-700 px-3 font-semibold">
+          In Stock
+        </h1>
 
-        <h1 className="text-[1.2em] text-red-700 px-3 font-semibold">₹105</h1>
-    </div>
-    </div>
-  )
+        <h1 className="text-[1.2em] text-red-700 px-3 font-semibold">{props.price}</h1>
+
+      
+
+      </div>
+
+  );
 }
 
 export default PopularCard;

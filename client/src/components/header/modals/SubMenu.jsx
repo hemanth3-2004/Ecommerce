@@ -15,7 +15,7 @@ function SubMenu({category}) {
 
   const items = menuItems[category] || ["No Items Available"];
   return (
-    <div className="mb-10">
+    <div className="mb-10 mr-3">
       <ul>
           {items.map((item,index)=>(
             <li key={index} className="text-gray-500 text-md hover:text-blue-600 pl-5 pt-2 cursor-pointer">{item}</li>

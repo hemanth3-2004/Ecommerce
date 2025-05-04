@@ -117,9 +117,7 @@ function Header() {
           </button>
 
           {modal && (
-            <div className="absolute top-full left-0 mt-2 z-50 bg-white border shadow-lg rounded p-4">
               <CategoryModel />
-            </div>
           )}
         </div>
 

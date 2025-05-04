@@ -39,18 +39,20 @@ function CategoryModel() {
   ];
 
   return (
+    <div className="absolute left-0 mt-1 z-50 ">
     <div className="relative flex items-center justify-center">
       <div
         className="ml-3 mt-3 flex flex-col md:flex-row relative"
         onMouseLeave={handleHoverLeave}
       >
         <div className="border border-gray-300 w-40 bg-white shadow-lg">
-          <div className="flex flex-col justify-between ml-3 mt-1 mb-2">
+          <div className="flex flex-col justify-between mt-1 mb-2 ">
             {categories.map((category) => (
-              <div key={category}>
+              
+              <div className="hover:bg-blue-50 text-gray-500 hover:text-blue-600" key={category} onMouseEnter={() => handleHoverEnter(category)}>
                 <button
-                  className="flex gap-2 px-2 py-1 text-gray-500 text-sm hover:text-blue-600"
-                  onMouseEnter={() => handleHoverEnter(category)}
+                  className="flex gap-2 px-2 py-1 text-sm"
+                  
                 >
                   <img
                     src={`https://api.spicezgold.com/download/file_17345252${getImageCode(
@@ -68,11 +70,12 @@ function CategoryModel() {
         </div>
 
         {type && (
-          <div className="border border-gray-300 w-40 bg-white shadow-lg mt-2 md:mt-0 md:ml-5 h-[245px]">
+          <div className="border border-gray-300 w-40 bg-white shadow-lg mt-2 md:mt-0 md:ml-0 h-[245px] ">
             <SubMenu category={selectedCategory} />
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

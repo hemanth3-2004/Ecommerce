@@ -8,10 +8,9 @@ import RelatedProducts from './relatedProducts';
 
 
 
-function DetailedCard(props) {
+function RelatedDetailedCard(props) {
 const [data,setData] = useState([]);
 const [count,setCount] = useState(1);
-const [previousCard, setPreviousCard] = useState(true);
 
 function addCount(){
     setCount(count+1);
@@ -34,10 +33,6 @@ function removeCount(){
     useEffect(()=>{
         getAllData();
     }, []);
-
-    const handleClick = ()=> {
-        setPreviousCard(false)
-    }
   return (
     <div>
     <div className="w-[100%] h-auto bg-white z-50 m-0">
@@ -117,9 +112,9 @@ function removeCount(){
     </div>  <hr className="my-4 border-t border-gray-300" />
     </div>
 
-    <RelatedProducts className="mt-5" id={data.id}  handleClose={()=>handleClick}/>
+    <RelatedProducts className="mt-5" id={data.id}/>
     </div>
   )
 }
 
-export default DetailedCard;
+export default RelatedDetailedCard;

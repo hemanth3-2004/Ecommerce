@@ -7,14 +7,12 @@ import CategoryModel from "./modals/CategoryModal";
 import LocationModal from "./modals/LocationModal";
 import SubMenu from "./modals/SubMenu";
 import SignupPage from "./SignUp";
-
 function Header() {
 
-    const navigate=useNavigate();
+    const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [location, setLocation] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
   function handleClick() {
     setModal(!modal);
   }
@@ -67,7 +65,7 @@ function Header() {
       <div className="flex justify-between items-center py-4">
         {/* Logo and Location */}
         <div className="flex items-center gap-4">
-          <img className="h-12 w-auto" src="https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo-1971-present.jpg" alt="Logo" />
+          <img className="h-12 w-auto cursor-pointer" src="https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo-1971-present.jpg" alt="Logo" onClick={()=> navigate("/")}/>
           <button
             className="hidden md:flex border outline-none px-4 py-3 rounded-md  transition text-gray-400 hover:border-gray-600 hover:text-gray-600  focus:bg-blue-50"
             onClick={handleLocationClick}

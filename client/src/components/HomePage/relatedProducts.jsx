@@ -3,6 +3,7 @@ import RelatedCard from './relatedCards';
 import axios from 'axios';
 import RelatedDetailedCard from './relatedDetailedCard';
 import DetailedCard from './detailedCard';
+import { useNavigate } from 'react-router-dom';
 function RelatedProducts(props) {
   const [data, setData] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -10,7 +11,7 @@ function RelatedProducts(props) {
   const [selectedId, setSelectedId] = useState(null);
   
   
-
+const navigate = useNavigate();
   const relative = {
     1: [2, 3, 4],
     2: [1, 3, 4],
@@ -79,10 +80,8 @@ function RelatedProducts(props) {
             title={product.title}
             price={product.price}
             image={product.image}
-            onClick={() => {
-              handleClick(product.id);
-              props.handleClose();
-            }}          />
+            onClick={() => navigate(`/relatedDetailedPage/${product.id}`)}
+         />
         ))}
       </div>
     </div>)}

@@ -5,12 +5,15 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { MdCompareArrows } from "react-icons/md";
 import RelatedProducts from './relatedProducts';
+import { useParams } from 'react-router-dom';
 
 
 
 function RelatedDetailedCard(props) {
 const [data,setData] = useState([]);
 const [count,setCount] = useState(1);
+
+const {id} = useParams();
 
 function addCount(){
     setCount(count+1);
@@ -23,7 +26,7 @@ function removeCount(){
 }
     const getAllData = async ()=>{
         try{
-            const response = await axios.get(`https://fakestoreapi.com/products/${props.id}`);
+            const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
             setData(response.data);
         }catch(error){
             console.error("Error fetching data:", error.message);
@@ -32,7 +35,7 @@ function removeCount(){
 
     useEffect(()=>{
         getAllData();
-    }, []);
+    }, [id]);
   return (
     <div>
     <div className="w-[100%] h-auto bg-white z-50 m-0">

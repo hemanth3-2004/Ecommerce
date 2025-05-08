@@ -4,12 +4,16 @@ import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import PopularCard from "./popularCard";
 import axios from "axios";
 import DetailedCard from "./detailedCard";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const TwoColumnLayout = () => {
   const [data, setData] = useState([]);
   const [card, setCard] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [activeTab, setActiveTab] = useState(null);
+
+  const navigate = useNavigate();
 
   // Fetch all products
   const getAllData = async () => {
@@ -31,6 +35,7 @@ const TwoColumnLayout = () => {
     setSelectedId(id);
     setCard(true);
   };
+
 
   return (
     <>
@@ -113,7 +118,7 @@ const TwoColumnLayout = () => {
                     title={item.title}
                     image={item.image}
                     price={item.price}
-                    onClick={() => handleClick(item.id)}
+                    onClick={() => navigate(`/detailedPage/${item.id}`)}
                   />
                 ))}
               </div>

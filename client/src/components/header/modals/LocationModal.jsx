@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
+import Header from "../Header";
 import SearchIcon from "@mui/icons-material/Search";
 
 const LocationModal = (props) => {
   const [search, setSearch] = useState("");
+  
+  const [somePlace,setSomePLace] = useState('');
+
+
+  const handleChange=(value)=>{
+    setSomePLace(value);
+    props.selectedCountry(value);
+    props.closeLocation();
+  }
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -247,7 +257,7 @@ const LocationModal = (props) => {
           filteredLocations.map((location, index) => (
             <li
               key={index}
-              className="p-2 hover:bg-cyan-100 cursor-pointer border-b last:border-b-0"
+              className="p-2 hover:bg-cyan-100 cursor-pointer border-b last:border-b-0" onClick={()=>handleChange(location)}
             >
               {location}
             </li>

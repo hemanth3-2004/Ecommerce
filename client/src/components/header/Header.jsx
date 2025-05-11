@@ -6,13 +6,18 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CategoryModel from "./modals/CategoryModal";
 import LocationModal from "./modals/LocationModal";
 import SubMenu from "./modals/SubMenu";
-import SignupPage from "./SignUp";
+import SigInPage from "./SignIn";
 function Header() {
 
     const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [location, setLocation] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [country,setCountry] = useState('');
+
+  function handleCountry(place){
+    setCountry(place);
+  }
   function handleClick() {
     setModal(!modal);
   }
@@ -70,7 +75,15 @@ function Header() {
             className="hidden md:flex border outline-none px-4 py-3 rounded-md  transition text-gray-400 hover:border-gray-600 hover:text-gray-600  focus:bg-blue-50"
             onClick={handleLocationClick}
           >
-            Your Location
+          {country? (
+            <div >
+            <span>Your Location : </span>
+            <span className="text-black">{country}</span>
+            </div>
+          ) : (
+            "Your Location"
+          )}
+
           </button>
         </div>
 
@@ -89,7 +102,7 @@ function Header() {
         {/* Sign In and Menu */}
         <div className="flex items-center gap-4">
           <button className="hidden md:flex items-center justify-center px-4 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700" onClick={()=>{
-            navigate("/signUp")
+            navigate("/signIn")
           }}>
             Sign In
           </button>
@@ -146,7 +159,7 @@ function Header() {
       {/* Location Modal */}
       {location && (
         <div className="fixed inset-0 bg-black bg-opacity-30 flex justify-center items-start pt-32 z-50">
-          <LocationModal closeLocation={handleLocationClick} />
+          <LocationModal closeLocation={handleLocationClick} selectedCountry={handleCountry} />
         </div>
       )}
     </header>

@@ -39,7 +39,6 @@ function SignInPage() {
           <button className="text-white font-bold bg-blue-400 px-8 py-2 rounded-md cursor-pointer hover:bg-blue-500">Sign In</button>
           <button className="border border-blue-500 text-blue-500 bg-white px-8 py-2 rounded-md hover:bg-blue-50 cursor-pointer">Cancel</button>
         </div>
-
         <div className="flex ml-11">
           <h2>Not Registered?</h2>
           <span className="text-blue-500 cursor-pointer hover:underline ml-1" onClick={()=>navigate('/signUp')}>SignUp</span>

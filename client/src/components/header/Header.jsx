@@ -6,6 +6,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CategoryModel from "./modals/CategoryModal";
 import LocationModal from "./modals/LocationModal";
 import SubMenu from "./modals/SubMenu";
+import { FiShoppingCart } from "react-icons/fi";
 import SigInPage from "./SignIn";
 function Header() {
 
@@ -105,6 +106,9 @@ function Header() {
             navigate("/signIn")
           }}>
             Sign In
+          </button>
+          <button className="hidden md:flex items-center justify-center px-5 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700">
+            <FiShoppingCart className="text-[1.5em]"/>
           </button>
           <button
             className="md:hidden flex items-center p-2 border rounded-full"

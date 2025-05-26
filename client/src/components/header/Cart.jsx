@@ -3,7 +3,7 @@ import CartProducts from './cartProducts';
 
 function Cart() {
   return (
-    <div className="bg-white text-gray-700 h-auto">
+    <div className="bg-white text -gray-700 h-auto">
         <div className=' ml-[5%] mr-[5%] mt-[2%] py-2 h-auto bg-gray-100 rounded-md shadow-md shadow-gray-400' >
       <h1 className=' text-[1.5rem] font-bold ml-5'>Cart Items</h1>
       <div className='flex flex-row  gap-[1%]'>

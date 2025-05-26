@@ -18,10 +18,10 @@ const TwoColumnLayout = () => {
   // Fetch all products
   const getAllData = async () => {
     try {
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const response = await axios.get("http://localhost:5000/api/products");
       setData(response.data);
     } catch (error) {
-      console.error("Error Fetching Data:", error.message);
+      console.error("Error Fetching Data From PostgreSQL:", error.message);
     }
   };
 

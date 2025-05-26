@@ -27,7 +27,7 @@ function removeCount(){
 }
     const getAllData = async ()=>{
         try{
-            const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+            const response = await axios.get(`http://localhost:5000/api/products/${id}`);
             setData(response.data);
         }catch(error){
             console.error("Error fetching data:", error.message);

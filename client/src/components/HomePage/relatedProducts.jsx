@@ -43,7 +43,7 @@ const navigate = useNavigate();
     const fetchProductAndRelated = async () => {
       try {
         // Fetch the main product
-        const productResponse = await axios.get(`https://fakestoreapi.com/products/${props.id}`);
+        const productResponse = await axios.get(`http://localhost:5000/api/products/${props.id}`);
         setData(productResponse.data);
 
         // Get related product IDs
@@ -51,7 +51,7 @@ const navigate = useNavigate();
 
         // Fetch all related products
         const relatedResponses = await Promise.all(
-          relatedIds.map(id => axios.get(`https://fakestoreapi.com/products/${id}`))
+          relatedIds.map(id => axios.get(`http://localhost:5000/api/products/${id}`))
         );
 
         const relatedData = relatedResponses.map(res => res.data);

@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 
 const pool = new Pool({
-   connectionString: process.env.DATABASE_URL,
     user : "postgres",
     host : "localhost",
     database : "ecommerce",
@@ -42,6 +41,32 @@ app.get("/api/products/:id", async (req, res) => {
   } catch (err) {
     console.error("Error fetching product with ID:", err.message);
     res.status(500).json({ error: "Failed to fetch product" });
+  }
+});
+
+app.post("/addUser",async(req,res)=>{
+  const { name, email, username, password, confirm_password } = req.body;
+
+    if (!name || !email || !username || !password || !confirm_password) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  if(password !== confirm_password){
+    return res.status(400).json({error: "password do not match"});
+  }
+
+  try{
+    const userExists = await pool.query("SELECT * FROM USERS WHERE username = $1",[username]);
+    if(userExists.rows.length>0){
+      return res.status(400).json({error: "Username already Exists"});
+    }
+
+    const newUser = await pool.query("Insert INTO USERS(name,username,email,password) values($1,$2,$3,$4) RETURNING *",[name,username,email,password]);
+    res.status(201).json({message:"User registered",user : newUser.rows[0]});
+  }
+  catch(err){
+    console.error(err.message);
+    res.status(500).json({error : "Server error"});
   }
 });
 

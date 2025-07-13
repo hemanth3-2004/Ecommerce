@@ -7,7 +7,7 @@ import Cart from "../header/Cart.jsx";
 const Home = () => {
   return (
     <div className="overflow-x-hidden">
-      <Cart />
+  
       <Carousel />
       <FeaturedCategories />
       <TwoColumnLayout />

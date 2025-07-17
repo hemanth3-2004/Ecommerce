@@ -1,4 +1,3 @@
-## my first ecommerce website, still under construction.
 ## Tech Stack :- ReactJs, Tailwind Css, PostgresSQL, fake store api.
 
 ![image](https://github.com/user-attachments/assets/56091784-05ae-4448-af34-c03df3599b03)

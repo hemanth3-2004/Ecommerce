@@ -48,18 +48,18 @@ function removeCount(){
 
 
 
-        const handleAddToCart = async()=> {
-        try{
-            await axios.post("http://localhost:5000/api/cart/add", {
-                user_id : userID,
-                product_id : productID,
-                quantity : quantity,
-            });
-            alert("Added to cart!");
-        }catch(err){
-            console.error(err);
-            alert("Count not add to cart ❌");
-        }
+    const handleAddToCart = async()=> {
+    try{
+        await axios.post("http://localhost:5000/api/cart/add", {
+            user_id : userID,
+            product_id : productID,
+            quantity : quantity,
+        });
+        alert("Added to cart!");
+    }catch(err){
+        console.error(err);
+        alert("Count not add to cart ❌");
+    }
     }
 
   return (

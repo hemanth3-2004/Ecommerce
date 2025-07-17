@@ -119,6 +119,19 @@ app.get("/api/cart/:userID", async(req,res) => {
   }
 });
 
+app.delete("/api/cart/remove", async(req,res) => {
+  const {user_id, product_id} = req.body;
+  try{
+   const result = await pool.query("DELETE FROM user_products WHERE user_id = $1 AND product_id = $2",[user_id,product_id]);
+   res.status(200).json({message : "Removed from cart"});
+   console.log(result);
+
+  }catch(error){
+    console.error("Error removing item",error);
+    res.status(500).json({error : "Failed to remove cart item"});
+  }
+});
+
 app.listen(5000,()=>{
     console.log("Server running on http://localhost:5000");
 })

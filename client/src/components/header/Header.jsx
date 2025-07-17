@@ -141,7 +141,6 @@ function Header({userData,displayUser}) {
             <div 
             className="absolute bg-white text-black border-2 border-solid border-gray-400 font-semibold  rounded-lg shadow-2xl top-[5rem] right-10 z-10 flex flex-col px-3 py-3" 
             >
-              <div className=" hover:bg-blue-50 py-1"><h2 className="hover:bg-blue-100">UserID: <span>{userData.id}</span></h2></div>
               <div className=" hover:bg-blue-50 py-1"><h2 className="hover:bg-blue-100">Username: <span>{userData.username}</span></h2></div>
             <div className=" hover:bg-blue-50 py-1"><h2 className="hover:bg-blue-100">Email: <span>{userData.email}</span></h2></div>
             <div className="py-1">

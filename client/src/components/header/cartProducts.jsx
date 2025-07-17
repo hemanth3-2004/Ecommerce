@@ -1,7 +1,24 @@
-import React, {useState} from 'react'
+import React from 'react'
+import axios from 'axios';
 
 
 function CartProducts(props) {
+
+  const  handleRemoveFromCart = async()=> {
+    try{
+      await axios.delete("http://localhost:5000/api/cart/remove",{
+        data: {
+        user_id : props.userID,
+        product_id : props.productID,
+        },
+      });
+      props.refreshCart();
+    }catch(err){
+      console.error(err);
+      alert("Couldn't remove from cart");
+    }
+  }
+
 
   return (
 <div className="my-4 bg-white rounded-lg shadow-md p-4 flex items-center">
@@ -18,9 +35,10 @@ function CartProducts(props) {
         <h2>Quantity : {props.quantity}</h2>
       </div>
       <h1 className="text-md font-medium">Total: ₹ {(props.price * props.quantity).toFixed(2)}</h1>
-      <div className="flex items-center space-x-3 border border-yellow-400 px-3 py-1 rounded-full bg-gray-100 cursor-pointer">
+      <button className="flex items-center space-x-3 border border-yellow-400 px-3 py-1 rounded-full bg-gray-100 cursor-pointer"
+      onClick={handleRemoveFromCart}>
         <h2>Remove</h2>
-      </div>
+      </button>
     </div>
     
   </div>

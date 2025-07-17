@@ -9,9 +9,12 @@ import { useParams } from 'react-router-dom';
 
 
 
-function RelatedDetailedCard(props) {
+function RelatedDetailedCard({userData}) {
 const [data,setData] = useState([]);
 const [count,setCount] = useState(1);
+const userID = userData.id;
+const productID = data.id;
+const quantity = count;
 
 const {id} = useParams();
 
@@ -36,6 +39,20 @@ function removeCount(){
     useEffect(()=>{
         getAllData();
     }, [id]);
+
+    const handleAddToCart = async()=> {
+        try{
+            await axios.post("http://localhost:5000/api/cart/add", {
+                user_id : userID,
+                product_id : productID,
+                quantity : quantity,
+            });
+            alert("Added to cart!");
+        }catch(err){
+            console.error(err);
+            alert("Count not add to cart ❌");
+        }
+    }
   return (
     <div>
     <div className="w-[100%] h-auto bg-white z-50 m-0">
@@ -65,7 +82,7 @@ function removeCount(){
 </div>
 
                 <div className='flex flex-row gap-4 ml-3 '>
-                <div className='border border-black w-[1.5em] bg-white text-center text-[1.2em] rounded-md text-black font-normal hover:bg-gray-100 cursor-pointer' onClick={props.handleClose}><h2>Xs</h2></div>
+                <div className='border border-black w-[1.5em] bg-white text-center text-[1.2em] rounded-md text-black font-normal hover:bg-gray-100 cursor-pointer' ><h2>XS</h2></div>
                 <div className='border border-black w-[1.5em] bg-white text-center text-[1.2em] rounded-md text-black font-normal hover:bg-gray-100 cursor-pointer'><h2>S</h2></div>
                 <div className='border border-black w-[1.5em] bg-white text-center text-[1.2em] rounded-md text-black font-normal hover:bg-gray-100 cursor-pointer'><h2>M</h2></div>
                 <div className='border border-black w-[1.5em] bg-white text-center text-[1.2em] rounded-md text-black font-normal hover:bg-gray-100 cursor-pointer'><h2>L</h2></div>
@@ -93,7 +110,9 @@ function removeCount(){
                </div>
 
                <div>
-                <button className='bg-custom rounded-full text-white font-normal px-3 py-1 text-[1.2em] hover:bg-violet-900 flex flex-row'><FaShoppingCart className='h-[1.3em] text-[1.3em]'/> <p className="ml-2">Add To Cart</p></button>
+                <button className='bg-custom rounded-full text-white font-normal px-3 py-1 text-[1.2em] hover:bg-violet-900 flex flex-row'
+                onClick={handleAddToCart}
+                ><FaShoppingCart className='h-[1.3em] text-[1.3em]'/> <p className="ml-2">Add To Cart</p></button>
                </div>
 
                <div>

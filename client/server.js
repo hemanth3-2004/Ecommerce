@@ -70,6 +70,54 @@ app.post("/addUser",async(req,res)=>{
   }
 });
 
+app.post("/logUser", async(req,res)=> {
+   const {email,password} = req.body;
+
+   if(!email || !password){
+    return res.status(400).json({error: "All fields are required"});
+   }
+ 
+   try{
+    const result = await pool.query("SELECT * FROM USERS WHERE email = $1 AND password = $2",[email,password]);
+    if(result.rows.length>0){
+      // Auth sucess, return user info
+      const user = result.rows[0];
+      res.json({success: true,user});
+    }else{
+      res.json({success: false, message: "Invalid credentials"});
+    }
+   }catch(err){
+    console.error(err);
+    res.status(500).json({success: false, message: "Database error"});
+   }
+
+});
+
+app.post("/api/cart/add", async(req,res)=>{
+  const {user_id, product_id, quantity} = req.body;
+   try{
+    const result = await pool.query("INSERT INTO user_products(user_id,product_id,quantity) VALUES($1,$2,$3)",[user_id,product_id,quantity])
+    res.status(200).json({message: "Product added to cart succesfully!"});
+    console.log(result);
+   }catch(err){
+    console.error(err);
+    res.status(500).json({error: "Failed to add product to cart"});
+   }
+});
+
+
+app.get("/api/cart/:userID", async(req,res) => {
+  const userID = req.params.userID;
+
+  try{
+    const result = await pool.query(
+      "SELECT p.*, up.quantity FROM products p JOIN user_products up ON p.id = up.product_id WHERE up.user_id = $1",[userID]);
+      res.status(200).json(result.rows);
+  }catch(error){
+    console.error("error fetching cart items:", error.message);
+    res.status(500).json({error: "failed to fetch cart items"});
+  }
+});
 
 app.listen(5000,()=>{
     console.log("Server running on http://localhost:5000");

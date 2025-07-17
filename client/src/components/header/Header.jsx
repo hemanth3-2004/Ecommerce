@@ -7,14 +7,31 @@ import CategoryModel from "./modals/CategoryModal";
 import LocationModal from "./modals/LocationModal";
 import SubMenu from "./modals/SubMenu";
 import { FiShoppingCart } from "react-icons/fi";
+import { FaUserCircle } from "react-icons/fa";
+import { CiLogout } from "react-icons/ci";
+
+
 import SigInPage from "./SignIn";
-function Header() {
+function Header({userData,displayUser}) {
 
     const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [location, setLocation] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [country,setCountry] = useState('');
+  const [showUser,setShowUser] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [homepage,setHomepage] = useState(false);
+
+  function handleHome(){
+    setHomepage(true);
+  }
+
+  
+
+   const handleLoginSuccess = (userData) => {
+    setLoggedInUser(userData);
+   }
 
   function handleCountry(place){
     setCountry(place);
@@ -102,14 +119,70 @@ function Header() {
 
         {/* Sign In and Menu */}
         <div className="flex items-center gap-4">
-          <button className="hidden md:flex items-center justify-center px-4 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700" onClick={()=>{
+          {displayUser ? (
+          <button 
+          className="hidden md:flex items-center justify-center px-5 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700 relative"
+          onClick={()=> setShowUser(!showUser)}>
+          <FaUserCircle className="text-[1.5em]"/>
+          </button>)
+          :
+
+          (<button 
+          className="hidden md:flex items-center justify-center px-4 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700" 
+          onClick={()=>{
             navigate("/signIn")
-          }}>
+          }}
+          >
             Sign In
+          </button>)          
+          }
+
+          { showUser && ( 
+            <div 
+            className="absolute bg-white text-black border-2 border-solid border-gray-400 font-semibold  rounded-lg shadow-2xl top-[5rem] right-10 z-10 flex flex-col px-3 py-3" 
+            >
+              <div className=" hover:bg-blue-50 py-1"><h2 className="hover:bg-blue-100">UserID: <span>{userData.id}</span></h2></div>
+              <div className=" hover:bg-blue-50 py-1"><h2 className="hover:bg-blue-100">Username: <span>{userData.username}</span></h2></div>
+            <div className=" hover:bg-blue-50 py-1"><h2 className="hover:bg-blue-100">Email: <span>{userData.email}</span></h2></div>
+            <div className="py-1">
+              <button className="hidden md:flex items-center justify-center px-3 py-1 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700 relative" 
+              onClick={() => {
+               localStorage.clear();
+               navigate("/");
+
+               setTimeout(() => {
+                 window.location.reload();
+               }, 100); // slight delay to allow navigation first
+               }}
+               >
+            <CiLogout className="text-[1.5em]"/> <h2 className="ml-2">Logout</h2>
           </button>
-          <button className="hidden md:flex items-center justify-center px-5 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700">
-            <FiShoppingCart className="text-[1.5em]"/>
-          </button>
+            </div>
+            </div>
+          )}
+          
+{displayUser ? (
+  <button
+    className="hidden md:flex items-center justify-center px-5 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700"
+    onClick={() => {
+      navigate("/cart");
+    }}
+  >
+    <FiShoppingCart className="text-[1.5em]" />
+  </button>
+) : (
+  <button
+    className="hidden md:flex items-center justify-center px-5 py-2 border outline-none bg-custom rounded-2xl text-white hover:bg-red-700"
+    onClick={() => {
+      alert("Sign in first");
+      setTimeout(() => navigate("/signIn"), 100); // 100ms delay
+    }}
+  >
+    <FiShoppingCart className="text-[1.5em]" />
+  </button>
+)}
+
+          
           <button
             className="md:hidden flex items-center p-2 border rounded-full"
             onClick={handleClick}
@@ -148,7 +221,7 @@ function Header() {
               <p>{name}</p>
             </button>
             <div
-              className={`absolute top-full left-0 mt-2 w-40 bg-white border shadow-lg pb-3 z-50 transition-opacity duration-300 ${
+              className={`absolute top-full left-0 mt-2 w-40 bg-white border shadow-lg pb-3 z-50 transition-opacity duration-300${
                 selectedCategory === name
                   ? "opacity-100 visible"
                   : "opacity-0 invisible pointer-events-none"
